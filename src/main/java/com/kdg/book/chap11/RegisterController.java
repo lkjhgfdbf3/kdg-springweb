@@ -28,7 +28,6 @@ public class RegisterController {
 
 	@RequestMapping("/main")
 	public String main() {
-		// request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request, response);
 		return "main";
 	}
 
