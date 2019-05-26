@@ -89,10 +89,8 @@ public class ArticleController {
 	 */
 	@GetMapping("/article/list")
 	public String deleteArticle(Article article,
-			@SessionAttribute("MEMBER")Member member) {
-			article.setUserId(member.getMemberId());
-			article.setName(member.getName());
-			articleDao.deleteArticle("1319");
+			@SessionAttribute("MEMBER")Member member,@RequestParam("articleId") String userId) {
+		    articleDao.deleteArticle(userId);
 			return "redirect:/app/article/list";
 			}
 }
