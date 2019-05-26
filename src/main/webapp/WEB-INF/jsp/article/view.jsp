@@ -20,12 +20,12 @@
 	</p>
 	<hr />
 	<p>${article.contentHtml }</p>
-	<hr />
+<hr />
 	<p>
-		<a href="./app/article/addForm">글 수정</a>
+		<a href="./app/article/change.jsp">글 수정</a>
 	</p>
 	<p>
-		<a href="./app/article/list">글 삭제</a>
+		<a href="./app/article/delete.jsp">글 삭제</a>
 	</p>
 </body>
 </html>

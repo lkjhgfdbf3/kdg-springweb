@@ -71,6 +71,8 @@ public class ArticleController {
 	/**
 	 * 글 수정
 	 */
+
+	@PostMapping("/article/change")
 	public void updateArticle() {
 		Article article = new Article();
 		article.setArticleId("7");
@@ -85,10 +87,13 @@ public class ArticleController {
 	/**
 	 * 글 삭제
 	 */
-	public void deleteArticle() {
-		if (articleDao.deleteArticle("8") > 0)
-			System.out.println("글을 삭제했습니다.");
-		else
-			System.out.println("글을 삭제하지 못했습니다.");
-	}
+	@GetMapping("/article/list")
+	public String deleteArticle(Article article,
+			@SessionAttribute("MEMBER")Member member) {
+			article.setUserId(member.getMemberId());
+			article.setName(member.getName());
+			articleDao.deleteArticle("1319");
+			return "redirect:/app/article/list";
+			}
 }
+
