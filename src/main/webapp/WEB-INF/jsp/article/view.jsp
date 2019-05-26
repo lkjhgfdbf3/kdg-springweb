@@ -22,10 +22,9 @@
 	<p>${article.contentHtml }</p>
 <hr />
 	<p>
-		<a href="./app/article/change.jsp">글 수정</a>
-	</p>
+		<a href="./app/article/change">수정</a>
 	<p>
-		<a href="./app/article/delete.jsp">글 삭제</a>
+		<a href='<c:url value='./app/article/delete?articleId=${article.articleId }'/>'>삭제</a>
 	</p>
 </body>
 </html>

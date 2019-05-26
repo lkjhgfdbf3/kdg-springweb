@@ -71,27 +71,22 @@ public class ArticleController {
 	/**
 	 * 글 수정
 	 */
+	@PostMapping("article/change")
+	public String updateArticle(String articleId,
+			@SessionAttribute("MEMBER")Member member) {
+	       articleDao.updateArticle(articleId);
+			return "article/change";
+			}
 
-	@PostMapping("/article/change")
-	public void updateArticle() {
-		Article article = new Article();
-		article.setArticleId("7");
-		article.setTitle("This is modified title.");
-		article.setContent("This is modified content");
-		if (articleDao.updateArticle(article) > 0)
-			System.out.println("글을 수정했습니다.");
-		else
-			System.out.println("글을 수정하지 못했습니다.");
-	}
 
 	/**
 	 * 글 삭제
 	 */
-	@GetMapping("/article/list")
-	public String deleteArticle(Article article,
-			@SessionAttribute("MEMBER")Member member,@RequestParam("articleId") String userId) {
-		    articleDao.deleteArticle(userId);
-			return "redirect:/app/article/list";
+	@GetMapping("article/delete")
+	public String deleteArticle(String articleId,
+			@SessionAttribute("MEMBER")Member member) {
+	       articleDao.deleteArticle(articleId);
+			return "article/delete";
 			}
 }
 
