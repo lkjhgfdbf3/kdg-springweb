@@ -1,17 +1,13 @@
 package com.kdg.book.chap13;
 
-import javax.servlet.http.HttpSession;
-
+import com.kdg.book.chap11.Member;
+import com.kdg.book.chap11.MemberDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
-
-import com.kdg.book.chap11.Member;
-import com.kdg.book.chap11.MemberDao;
 
 /**
  * p.366 [리스트 13.17] ChangePwdController 수정<br/>
@@ -25,21 +21,11 @@ public class MemberController {
 	@Autowired
 	MemberDao memberDao;
 
-	@RequestMapping("/member/memberInfo")
-	public String memberInfo(HttpSession session) {
-		return "member/memberInfo";
-	}
-
-	@RequestMapping("/member/changePwdForm")
-	public String changePwdForm(HttpSession session) {
-		return "member/changePwdForm";
-	}
-
 	@PostMapping("/member/changePwd")
 	public String submit(
 			@RequestParam("currentPassword") String currentPassword,
 			@RequestParam("newPassword") String newPassword,
-			@SessionAttribute("MEMBER")Member member,Model model) {
+			@SessionAttribute("MEMBER") Member member, Model model) {
 		int updatedRows = memberDao.changePassword(member.getMemberId(),
 				currentPassword, newPassword);
 
