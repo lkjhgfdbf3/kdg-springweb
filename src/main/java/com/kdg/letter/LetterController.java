@@ -101,3 +101,4 @@ public class LetterController {
 			return "redirect:/app/letter/listReceived";
 	}
 }
+

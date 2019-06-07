@@ -51,12 +51,11 @@ public class ArticleController {
 		Article article = articleDao.getArticle(articleId);
 		model.addAttribute("article", article);
 	}
-
+	
 	@GetMapping("/article/s/form")
 	public String articleAddForm(HttpSession session) {
 		return "article/s/form";
-	}
-
+}
 	/**
 	 * 글 등록
 	 */
